@@ -38,9 +38,12 @@ return fAverage;
 
 int main()
 { 
-    char ListOfNumber[] = "1, 2, 12, 20, 50, 8, 4";
+char ListOfNumber[255];
     int ArrayOfNumber[100];
-    int Number = toInt(ListOfNumber, ArrayOfNumber);
+    int Number = 0;
+    printf("Provide list of number sparate by comman : ");
+    scanf("%s",ListOfNumber);
+    Number =  toInt(ListOfNumber, ArrayOfNumber);
     
     printf("Dispaly Array of Integer\n");
     for(int i=0;i<Number;i++){
