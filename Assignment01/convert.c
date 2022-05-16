@@ -14,10 +14,12 @@ void main()
     char SampleText[30];
     printf("Please enter Text: ");
     scanf("%s", SampleText);
-    for(int i=0;i++;i<30){
+    for(int i=0;i<30;i++){
         int Asc;
-        Asc = SampleText[i];
-        if(Asc>= 97) {
+        Asc = (int)SampleText[i];
+        //printf("Char %d :",i);
+        //printf("%c\n",Asc);
+        if(Asc>= 97){
             SampleText[i] = Asc-32;
         }
     }
