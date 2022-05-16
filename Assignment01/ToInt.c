@@ -16,10 +16,16 @@ int toInt(char ListOfNumber[],int ArrayOfNumber[]){
     int iCountOfNumber=0;
     int i=0;
     printf("get string list : %s\n", ListOfNumber);
+
+    //
     char *token = strtok(ListOfNumber, ",");
     
     while (token != NULL) {
+
+        //convert string to integer
         ArrayOfNumber[i] = atoi(token);
+
+        // fetch next token
         token = strtok(NULL,",");
         i++;
     }
@@ -29,9 +35,13 @@ return iCountOfNumber;
 
 int main()
 { 
-    char ListOfNumber[] = "1, 2, 12, 20, 50, 8, 4";
+    
+    char ListOfNumber[255];
     int ArrayOfNumber[100];
-    int number = toInt(ListOfNumber, ArrayOfNumber);
+    int number = 0;
+    printf("Provide list of number sparate by comman : ");
+    scanf("%s",ListOfNumber);
+    number = toInt(ListOfNumber, ArrayOfNumber);
     printf("Dispaly Array of Integer\n");
     for(int i=0;i<number;i++){
         printf("position %d: %d\n", i, ArrayOfNumber[i]);

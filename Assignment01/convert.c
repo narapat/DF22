@@ -9,12 +9,12 @@ Hint: ASCII Table is your friend
 Save the file as convert.c
 */
 
-void main()
+int main()
 {
-    char SampleText[30];
+    char SampleText[255];
     printf("Please enter Text: ");
     scanf("%s", SampleText);
-    for(int i=0;i<30;i++){
+    for(int i=0;i<255;i++){
         int Asc;
         Asc = (int)SampleText[i];
         //printf("Char %d :",i);
@@ -24,4 +24,6 @@ void main()
         }
     }
     printf("Your Text : %s", SampleText);
+
+return 0;
 }
