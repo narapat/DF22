@@ -1,6 +1,25 @@
 #include<stdio.h>
 
+/*
+Task 1: Write a program to convert all text to ALL CAPS
+
+Use scanf to read a string input
+Your program print out the same input to your screen but all letters are in CAPITAL LETTERS
+Hint: ASCII Table is your friend
+Save the file as convert.c
+*/
+
 void main()
 {
-    printf("Hello World 123");
+    char SampleText[30];
+    printf("Please enter Text: ");
+    scanf("%s", SampleText);
+    for(int i=0;i++;i<30){
+        int Asc;
+        Asc = SampleText[i];
+        if(Asc>= 97) {
+            SampleText[i] = Asc-32;
+        }
+    }
+    printf("Your Text : %s", SampleText);
 }
