@@ -20,7 +20,7 @@ int toInt(char ListOfNumber[],int ArrayOfNumber[]){
     int i=0;
     while (token != NULL) {
         ArrayOfNumber[i] = atoi(token);
-        printf("%d\n", ArrayOfNumber[i]);
+        //printf("%d\n", ArrayOfNumber[i]);
         token = strtok(NULL,",");
         i++;
     }
@@ -29,13 +29,13 @@ return CountOfNumber;
 }
 
 int main()
-{
-    char ListOfNumber[] = "1,2,12,20,50,8,4";
+{ 
+    char ListOfNumber[] = "3, 1, 2, 12, 20, 50, 8, 4";
     int ArrayOfNumber[100];
     int number = toInt(ListOfNumber, ArrayOfNumber);
     printf("Dispaly Array of Integer\n");
     for(int i=0;i<number;i++){
-        printf("%d:%d\n", i,ArrayOfNumber[i]);
+        printf("position %d: %d\n", i,ArrayOfNumber[i]);
     }
 return 0;
 }
