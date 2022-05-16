@@ -41,7 +41,7 @@ int main()
 char ListOfNumber[255];
     int ArrayOfNumber[100];
     int Number = 0;
-    printf("Provide list of number sparate by comman : ");
+    printf("Provide list of number sparate by comma : ");
     scanf("%s",ListOfNumber);
     Number =  toInt(ListOfNumber, ArrayOfNumber);
     

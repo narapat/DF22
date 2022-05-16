@@ -39,7 +39,7 @@ int main()
     char ListOfNumber[255];
     int ArrayOfNumber[100];
     int number = 0;
-    printf("Provide list of number sparate by comman : ");
+    printf("Provide list of number sparate by comma : ");
     scanf("%s",ListOfNumber);
     number = toInt(ListOfNumber, ArrayOfNumber);
     printf("Dispaly Array of Integer\n");
