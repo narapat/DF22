@@ -92,7 +92,10 @@ int delete(int input){
                 CurPtr->next = NULL;
                 free(CurPtr);
                 break;
-            }else{
+            }
+            // Not found fetch next node
+            else{
+                // Keep previous node in case of match at last node.
                 if (CurPtr->next == TailPtr){
                     PreviousPtr = CurPtr;
                 }
@@ -141,7 +144,6 @@ int main(){
                 delete(input);
                 break;
             case 'p':
-                //printf("This is your current linked list");
                 print();
                 break;
             case 'x':
