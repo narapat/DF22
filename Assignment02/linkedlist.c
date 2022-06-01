@@ -52,6 +52,7 @@ void insert(int input){
 int delete(int input){
 
     int i = 0;
+    int matched = 0;
     struct ListNode* PreviousPtr = NULL;
     CurPtr = HeadPtr;
     PreviousPtr = CurPtr;
@@ -64,46 +65,52 @@ int delete(int input){
             printf("compare polisiton %d \n",i);
             // Found and Only one Node
             if(CurPtr == HeadPtr && CurPtr == TailPtr && CurPtr->value == input){
-                printf("only one node, match polisiton %d \n",i);
+                printf("only one node, match polisiton %d | ",i);
+                printf("P:%d,C:%d,H:%d,T:%d \n",PreviousPtr->value,CurPtr->value,HeadPtr->value,TailPtr->value);
                 HeadPtr = NULL;
                 TailPtr = NULL;
                 free(CurPtr);
+                matched = 1;
                 break;
             }
             // Found at First Node
             else if(CurPtr == HeadPtr && CurPtr->value == input){
-                printf("first node, match polisiton %d \n",i);
+                printf("first node, match polisiton %d | ",i);
+                printf("P:%d,C:%d,H:%d,T:%d \n",PreviousPtr->value,CurPtr->value,HeadPtr->value,TailPtr->value);
                 HeadPtr = HeadPtr->next;
                 free(CurPtr);
+                matched = 1;
                 break;
             }
             // Found at Last Node
             else if(CurPtr == TailPtr && CurPtr->value == input){
-                printf("last node, match polisiton %d \n",i);
+                printf("last node, match polisiton %d | ",i);
+                printf("P:%d,C:%d,H:%d,T:%d \n",PreviousPtr->value,CurPtr->value,HeadPtr->value,TailPtr->value);
                 TailPtr = PreviousPtr;
                 TailPtr->next = NULL;                
                 free(CurPtr);
+                matched = 1;
                 break;
             }
             // Found at 2 .. (n-1) Node
             else if(CurPtr->value == input){
-                printf("match polisiton %d \n",i);
+                printf("match polisiton %d | ",i);
+                printf("P:%d,C:%d,H:%d,T:%d \n",PreviousPtr->value,CurPtr->value,HeadPtr->value,TailPtr->value);
                 PreviousPtr->next = CurPtr->next;
                 CurPtr->next = NULL;
                 free(CurPtr);
+                matched = 1;
                 break;
             }
             // Not found fetch next node
             else{
                 // Keep previous node in case of match at last node.
-                if (CurPtr->next == TailPtr){
-                    PreviousPtr = CurPtr;
-                }
+                PreviousPtr = CurPtr;
                 CurPtr = CurPtr->next;
             }
         }
     }
-    return i;
+    return matched;
 }
 
 void print(){
@@ -141,7 +148,9 @@ int main(){
             case 'd':
                 printf("Please provide integer value to delete from linked list : ");
                 scanf("%d",&input);
-                delete(input);
+                if(delete(input)==0){
+                    printf("No matched value found in linked list : ");
+                }
                 break;
             case 'p':
                 print();
