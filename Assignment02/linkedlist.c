@@ -47,41 +47,60 @@ void insert(int input){
          printf("%d inserted.",input);
          numberOfValue++;
     }
-    
 }
 
 int delete(int input){
-     int i=0;
-     struct ListNode* TempPtr = NULL;
-     if (numberOfValue==0){
-         printf("No value in the list, skip deletion");
-     }else if(HeadPtr->value==input){
-            TempPtr = HeadPtr;
-            HeadPtr = HeadPtr->next;
-            TempPtr->next = NULL;
-            free(TempPtr);
-            i=1;
-            numberOfValue--;
-            printf("deleted first found of %d from position %d",input,i);
-    }else if(HeadPtr->next != NULL){
-            i=2;
-            CurPtr = HeadPtr;
-            TempPtr = CurPtr->next;
-            while (TempPtr != NULL) {
-                if(TempPtr->value == input){
-                    CurPtr->next = TempPtr->next;
-                    TempPtr->next = NULL;
-                    free(TempPtr);
-                    numberOfValue--;
-                    printf("deleted first found of %d from position %d",input,i);
-                }else{
-                    CurPtr = TempPtr;
-                    TempPtr = CurPtr->next;
-                    i++;
-                }
+
+    int i = 0;
+    struct ListNode* PreviousPtr = NULL;
+    CurPtr = HeadPtr;
+    PreviousPtr = CurPtr;
+    if (CurPtr == NULL) {
+        printf("No value in the list, skip deletion");
+    } else {
+        // Match
+        while (CurPtr != NULL) {
+            i=i+1;
+            printf("compare polisiton %d \n",i);
+            // Found and Only one Node
+            if(CurPtr == HeadPtr && CurPtr == TailPtr && CurPtr->value == input){
+                printf("only one node, match polisiton %d \n",i);
+                HeadPtr = NULL;
+                TailPtr = NULL;
+                free(CurPtr);
+                break;
             }
-        }else {printf("\nNo value found");}
-     return i;   
+            // Found at First Node
+            else if(CurPtr == HeadPtr && CurPtr->value == input){
+                printf("first node, match polisiton %d \n",i);
+                HeadPtr = HeadPtr->next;
+                free(CurPtr);
+                break;
+            }
+            // Found at Last Node
+            else if(CurPtr == TailPtr && CurPtr->value == input){
+                printf("last node, match polisiton %d \n",i);
+                TailPtr = PreviousPtr;
+                TailPtr->next = NULL;                
+                free(CurPtr);
+                break;
+            }
+            // Found at 2 .. (n-1) Node
+            else if(CurPtr->value == input){
+                printf("match polisiton %d \n",i);
+                PreviousPtr->next = CurPtr->next;
+                CurPtr->next = NULL;
+                free(CurPtr);
+                break;
+            }else{
+                if (CurPtr->next == TailPtr){
+                    PreviousPtr = CurPtr;
+                }
+                CurPtr = CurPtr->next;
+            }
+        }
+    }
+    return i;
 }
 
 void print(){
